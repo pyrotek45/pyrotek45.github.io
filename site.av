@@ -399,6 +399,9 @@ let blog_pages = map (\p
       
       {qa_section}
     </article>
+    <div style="margin-top: 20px; margin-bottom: 20px;">
+      <a href="../index.html" class="btn">&larr; Back</a>
+    </div>
   "} in
   
   @blog/{p.slug}.html {"{layout p.title page_content}"}
@@ -409,7 +412,7 @@ let programming_langs_page =
   let content = {"
     {header_html}
     <h2>Programming Languages</h2>
-    <p>A collection of interesting programming languages I've stumbled upon.</p>
+    <p>Here are some projects that I want to share.</p>
     <ul class="post-list">
       {programming_lang_items}
     </ul>
