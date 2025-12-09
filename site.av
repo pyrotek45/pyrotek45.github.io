@@ -79,6 +79,7 @@ let css = {{"
     margin-bottom: 40px;
     padding-bottom: 20px;
     border-bottom: 2px dashed #444;
+    text-align: center;
   }
   .home-grid {
     display: grid;
@@ -88,6 +89,16 @@ let css = {{"
   @media (max-width: 600px) {
     .home-grid {
       grid-template-columns: 1fr;
+    }
+    .ascii-art {
+      display: none;
+    }
+    .btn {
+      display: block;
+      width: 100%;
+      margin-right: 0;
+      margin-bottom: 10px;
+      box-sizing: border-box;
     }
   }
   .sidebar-section {
@@ -224,7 +235,7 @@ let header_html = {"
         <a href="https://github.com/{username}" class="btn">GitHub</a>
         <a href="https://discord.gg/xYVVcerH89" class="btn">Discord</a>
         <a href="https://youtube.com/@pyrotek45" class="btn">YouTube</a>
-        <a href="../cool-finds.html" class="btn">Cool Finds</a>
+        <a href="../programming-langs.html" class="btn">Programming-langs</a>
       </div>
     </header>
 "} in
@@ -272,17 +283,17 @@ let project_items = map (\p {"
   </div>
 "}) projects in
 
-# --- Cool Finds List ---
-let cool_finds = [
-  { name: "SerenityOS", url: "https://serenityos.org/", desc: "A graphical Unix-like operating system for x86 computers." },
-  { name: "Zig", url: "https://ziglang.org/", desc: "A general-purpose programming language and toolchain for maintaining robust, optimal and reusable software." }
+# --- Programming Langs List ---
+let programming_langs = [
+  { name: "Niva", url: "https://github.com/gavr123456789/Niva", desc: "A modern programming language." },
+  { name: "Margarine", url: "https://github.com/todaymare/margarine", desc: "A programming language project." }
 ] in
-let cool_find_items = map (\p {"
+let programming_lang_items = map (\p {"
   <li class="post-item">
     <h3><a href="{p.url}" target="_blank">{p.name}</a></h3>
     <p>{p.desc}</p>
   </li>
-"}) cool_finds in
+"}) programming_langs in
 
 # --- Page Generators ---
 
@@ -393,18 +404,18 @@ let blog_pages = map (\p
   @blog/{p.slug}.html {"{layout p.title page_content}"}
 ) posts in
 
-# 3. Cool Finds Page
-let cool_finds_page = 
+# 3. Programming Langs Page
+let programming_langs_page = 
   let content = {"
     {header_html}
-    <h2>Cool Finds</h2>
-    <p>A collection of interesting projects and resources I've stumbled upon.</p>
+    <h2>Programming Languages</h2>
+    <p>A collection of interesting programming languages I've stumbled upon.</p>
     <ul class="post-list">
-      {cool_find_items}
+      {programming_lang_items}
     </ul>
   "} in
-  @cool-finds.html {"{layout "Cool Finds" content}"}
+  @programming-langs.html {"{layout "Programming Languages" content}"}
 in
 
 # --- Deploy List ---
-[index_page, cool_finds_page] + blog_pages
+[index_page, programming_langs_page] + blog_pages
