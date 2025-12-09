@@ -54,8 +54,22 @@ let css = {{"
   }
   .post-item {
     margin-bottom: 20px;
-    border-bottom: 1px solid #333;
-    padding-bottom: 20px;
+    border: 1px solid #333;
+    padding: 20px;
+    background: #1a1a1a;
+    border-radius: 5px;
+    transition: transform 0.2s, border-color 0.2s;
+  }
+  .post-item:hover {
+    transform: translateY(-2px);
+    border-color: #666;
+  }
+  .post-item h3 {
+    margin-top: 0;
+    border-bottom: none;
+  }
+  .post-item a {
+    border-bottom: none;
   }
   .date {
     color: #888;
@@ -197,45 +211,7 @@ let css = {{"
     text-align: right;
   }
   
-  /* Video Marquee */
-  .video-marquee {
-    overflow: hidden;
-    white-space: nowrap;
-    padding: 20px 0;
-    margin-bottom: 20px;
-    border-bottom: 1px dashed #333;
-    position: relative;
-  }
-  
-  .video-track {
-    display: inline-block;
-    animation: scroll 60s linear infinite;
-  }
-  
-  .video-track:hover,
-  .video-track:focus-within {
-    animation-play-state: paused;
-  }
-  
-  .video-item {
-    display: inline-block;
-    width: 280px;
-    height: 157px;
-    margin-right: 20px;
-    vertical-align: top;
-    border: 1px solid #333;
-    background: #000;
-  }
-  
-  .video-item iframe {
-    width: 100%;
-    height: 100%;
-  }
-  
-  @keyframes scroll {
-    0% { transform: translateX(0); }
-    100% { transform: translateX(-50%); }
-  }
+  /* Video Marquee - REMOVED */
 "}} in
 
 let username = "pyrotek45" in
@@ -247,6 +223,8 @@ let header_html = {"
       <div class="links">
         <a href="https://github.com/{username}" class="btn">GitHub</a>
         <a href="https://discord.gg/xYVVcerH89" class="btn">Discord</a>
+        <a href="https://youtube.com/@pyrotek45" class="btn">YouTube</a>
+        <a href="../cool-finds.html" class="btn">Cool Finds</a>
       </div>
     </header>
 "} in
@@ -294,69 +272,17 @@ let project_items = map (\p {"
   </div>
 "}) projects in
 
-# --- Music Video Rotation ---
-# Add your YouTube Video IDs here
-let music_videos = [
-  "97IojQ09CI8", 
-  "rVfQGwVj5O0",
-  "IZePWjkBh0U", 
-  "Eur3EelqJOU",
-  "li-qUm6AUkU",
-  "7pudq6Z0FYY",
-  "JhxjI8lJtbk"
+# --- Cool Finds List ---
+let cool_finds = [
+  { name: "SerenityOS", url: "https://serenityos.org/", desc: "A graphical Unix-like operating system for x86 computers." },
+  { name: "Zig", url: "https://ziglang.org/", desc: "A general-purpose programming language and toolchain for maintaining robust, optimal and reusable software." }
 ] in
-# Duplicate list for seamless scrolling
-let marquee_videos = music_videos + music_videos in
-let video_items = map (\v {"
-  <div class="video-item">
-    <iframe src="https://www.youtube.com/embed/{v}?enablejsapi=1" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
-  </div>
-"}) marquee_videos in
-
-let marquee_script = {{"
-    <script>
-      // Load YouTube IFrame API
-      var tag = document.createElement('script');
-      tag.src = "https://www.youtube.com/iframe_api";
-      var firstScriptTag = document.getElementsByTagName('script')[0];
-      firstScriptTag.parentNode.insertBefore(tag, firstScriptTag);
-
-      var players = [];
-
-      function onYouTubeIframeAPIReady() {
-        var iframes = document.querySelectorAll('.video-item iframe');
-        iframes.forEach(function(iframe) {
-          players.push(new YT.Player(iframe, {
-            events: {
-              'onStateChange': onPlayerStateChange
-            }
-          }));
-        });
-      }
-
-      function onPlayerStateChange(event) {
-        var track = document.querySelector('.video-track');
-        if (!track) return;
-
-        // YT.PlayerState.PLAYING is 1
-        if (event.data == 1) {
-          track.style.animationPlayState = 'paused';
-        } else {
-           // Check if any player is playing
-           var anyPlaying = false;
-           for (var i = 0; i < players.length; i++) {
-             if (players[i].getPlayerState() == 1) {
-               anyPlaying = true;
-               break;
-             }
-           }
-           if (!anyPlaying) {
-             track.style.animationPlayState = 'running';
-           }
-        }
-      }
-    </script>
-"}} in
+let cool_find_items = map (\p {"
+  <li class="post-item">
+    <h3><a href="{p.url}" target="_blank">{p.name}</a></h3>
+    <p>{p.desc}</p>
+  </li>
+"}) cool_finds in
 
 # --- Page Generators ---
 
@@ -382,14 +308,6 @@ let index_page =
                                                                                                                       
                                                                                                                                                         
     </div>
-
-    <div class="video-marquee">
-      <div class="video-track">
-        {video_items}
-      </div>
-    </div>
-
-    {marquee_script}
 
     {header_html}
 
@@ -436,7 +354,7 @@ let blog_pages = map (\p
           <!-- Author Response -->
           <div class="chat-message right">
             <div class="avatar author">
-              <img src="https://github.com/{username}.png" alt="Me">
+              <img src="../images/profile.png" alt="Me">
             </div>
             <div class="message-bubble">
               <span class="sender-name">{username}</span>
@@ -458,7 +376,9 @@ let blog_pages = map (\p
   in
 
   let page_content = {"
-    {header_html}
+    <div style="margin-bottom: 20px;">
+      <a href="../index.html" class="btn">&larr; Back</a>
+    </div>
     <article>
       <h2>{p.title}</h2>
       <p class="date">{p.date}</p>
@@ -467,13 +387,24 @@ let blog_pages = map (\p
       </div>
       
       {qa_section}
-      
-      <p><a href="../index.html">&larr; Back to Home</a></p>
     </article>
   "} in
   
   @blog/{p.slug}.html {"{layout p.title page_content}"}
 ) posts in
 
+# 3. Cool Finds Page
+let cool_finds_page = 
+  let content = {"
+    {header_html}
+    <h2>Cool Finds</h2>
+    <p>A collection of interesting projects and resources I've stumbled upon.</p>
+    <ul class="post-list">
+      {cool_find_items}
+    </ul>
+  "} in
+  @cool-finds.html {"{layout "Cool Finds" content}"}
+in
+
 # --- Deploy List ---
-[index_page] + blog_pages
+[index_page, cool_finds_page] + blog_pages
