@@ -24,6 +24,14 @@ let css = {{"
     border-bottom: 2px solid #444;
     padding-bottom: 10px;
   }
+  h1 a {
+    border-bottom: none;
+    cursor: pointer;
+  }
+  h1 a:hover {
+    background: transparent;
+    opacity: 0.7;
+  }
   a {
     color: #fff;
     text-decoration: none;
@@ -34,14 +42,14 @@ let css = {{"
   }
   .btn {
     display: inline-block;
-    padding: 10px 20px;
+    padding: 8px 15px;
     background: #333;
     color: #fff;
     border: 2px solid #666;
-    margin-right: 10px;
     font-weight: bold;
     box-shadow: 3px 3px 0px #eee;
     transition: all 0.1s;
+    white-space: nowrap;
   }
   .btn:hover {
     background: #444;
@@ -81,6 +89,12 @@ let css = {{"
     border-bottom: 2px dashed #444;
     text-align: center;
   }
+  .links {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 10px;
+  }
   .home-grid {
     display: grid;
     grid-template-columns: 2fr 1fr;
@@ -93,11 +107,11 @@ let css = {{"
     .ascii-art {
       display: none;
     }
+    .links {
+      flex-direction: column;
+    }
     .btn {
-      display: block;
       width: 100%;
-      margin-right: 0;
-      margin-bottom: 10px;
       box-sizing: border-box;
     }
   }
@@ -250,9 +264,9 @@ let username = "pyrotek45" in
 
 let header_html = {"
     <header class="nav">
-      <h1><a href="../index.html">{username}</a></h1>
       <p>Linux enjoyer, programming lang dev, musician and free will denier.</p>
       <div class="links">
+        <a href="../index.html" class="btn">Home</a>
         <a href="https://github.com/{username}" class="btn">GitHub</a>
         <a href="https://discord.gg/xYVVcerH89" class="btn">Discord</a>
         <a href="https://youtube.com/@pyrotek45" class="btn">YouTube</a>
