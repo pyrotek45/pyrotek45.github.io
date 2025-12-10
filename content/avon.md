@@ -1,19 +1,18 @@
-{{"
-<h1>Avon: Superpowers for Your Files</h1>
+# Avon: Superpowers for Your Files
 
-<p><strong>Avon</strong> is a tool that gives superpowers to your configuration files. It combines a functional programming language with a deployment system, allowing you to generate and manage hundreds of files from a single source of truth.</p>
+**Avon** is a tool that gives superpowers to your configuration files. It combines a functional programming language with a deployment system, allowing you to generate and manage hundreds of files from a single source of truth.
 
-<p><em>In fact, this entire website is generated using Avon!</em> It's not just for configuration files; it can generate HTML, documentation, scripts, or any text-based format.</p>
+*In fact, this entire website is generated using Avon!* It's not just for configuration files; it can generate HTML, documentation, scripts, or any text-based format.
 
-<h2>What is Avon?</h2>
+## What is Avon?
 
-<p>At its core, Avon solves the "copy-paste-modify" problem. Instead of maintaining 50 nearly identical YAML, JSON, or config files, you write one Avon program that generates them all.</p>
+At its core, Avon solves the "copy-paste-modify" problem. Instead of maintaining 50 nearly identical YAML, JSON, or config files, you write one Avon program that generates them all.
 
-<p>It works with <strong>any file format</strong>—YAML, JSON, TOML, HCL, shell scripts, or even documentation.</p>
+It works with **any file format**—YAML, JSON, TOML, HCL, shell scripts, or even documentation.
 
-<h2>The Superpower: <code>@</code> Deployment</h2>
+## The Superpower: `@` Deployment
 
-<p>The magic of Avon is the <code>@</code> syntax. It lets you define exactly where a file should go, right inside the code that generates it.</p>
+The magic of Avon is the `@` syntax. It lets you define exactly where a file should go, right inside the code that generates it.
 
 <pre><code>let port = 8080 in
 let env = "production" in
@@ -26,27 +25,26 @@ let env = "production" in
 "}
 </code></pre>
 
-<p>When you run <code>avon --deploy</code>, this file is created instantly.</p>
+When you run `avon --deploy`, this file is created instantly.
 
-<h2>Modularity & Creativity</h2>
+## Modularity & Creativity
 
-<p>Every Avon file is a single expression. This means any Avon program can be imported into another, allowing for incredible modularity. You can build libraries of functions, templates, or data structures and compose them into larger systems.</p>
+Every Avon file is a single expression. This means any Avon program can be imported into another, allowing for incredible modularity. You can build libraries of functions, templates, or data structures and compose them into larger systems.
 
-<p>Because it's a full programming language, you can use it for creative tasks beyond just config files. I'm using it to generate this static blog, but you could use it to:</p>
-<ul>
-    <li>Scaffold new project structures.</li>
-    <li>Generate boilerplate code for different languages.</li>
-    <li>Create personalized dotfiles for different machines.</li>
-    <li>Manage complex CI/CD pipelines.</li>
-</ul>
+Because it's a full programming language, you can use it for creative tasks beyond just config files. I'm using it to generate this static blog, but you could use it to:
 
-<h2>Git Integration</h2>
+* Scaffold new project structures.
+* Generate boilerplate code for different languages.
+* Create personalized dotfiles for different machines.
+* Manage complex CI/CD pipelines.
 
-<p>Avon has built-in Git support. You can run Avon programs directly from a GitHub repository without downloading them manually. This makes sharing and using tools incredibly easy.</p>
+## Git Integration
+
+Avon has built-in Git support. You can run Avon programs directly from a GitHub repository without downloading them manually. This makes sharing and using tools incredibly easy.
 
 <pre><code>avon --git pyrotek45/avon/examples/site_generator.av --root ./site</code></pre>
 
-<h2>Basic Commands</h2>
+## Basic Commands
 
 <pre><code># Evaluate a program and print result
 avon eval examples/map_example.av
@@ -58,7 +56,7 @@ avon examples/site_generator.av --deploy --root ./output --force
 avon examples/greet.av --deploy -name Alice -age 30 --root ./gen --force
 </code></pre>
 
-<h2>Command-Line Flags</h2>
+## Command-Line Flags
 
 <table style="width: 100%; border-collapse: collapse; margin: 20px 0;">
 <thead>
@@ -117,13 +115,13 @@ avon examples/greet.av --deploy -name Alice -age 30 --root ./gen --force
 </tbody>
 </table>
 
-<h2>Real-World Examples</h2>
+## Real-World Examples
 
-<p>I hope you find other useful reasons to use Avon. It's an incredibly powerful tool that can simplify complex workflows and ensure consistency across your projects. Whether you're managing Kubernetes manifests, generating static sites, or just trying to avoid copy-pasting config files, Avon gives you the superpowers to do it better.</p>
+I hope you find other useful reasons to use Avon. It's an incredibly powerful tool that can simplify complex workflows and ensure consistency across your projects. Whether you're managing Kubernetes manifests, generating static sites, or just trying to avoid copy-pasting config files, Avon gives you the superpowers to do it better.
 
-<h2>Get Started</h2>
+## Get Started
 
-<p>Avon is a single binary with no dependencies.</p>
+Avon is a single binary with no dependencies.
 
 <pre><code># 1. Create a file
 echo 'let name = "World" in @/hello.txt "Hello, {name}!"' > hello.av
@@ -132,5 +130,4 @@ echo 'let name = "World" in @/hello.txt "Hello, {name}!"' > hello.av
 avon hello.av --deploy --root ./output
 </code></pre>
 
-<p>Stop managing files by hand. Give them superpowers with Avon.</p>
-"}}
+Stop managing files by hand. Give them superpowers with Avon.
