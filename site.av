@@ -257,6 +257,7 @@ let header_html = {"
         <a href="https://discord.gg/xYVVcerH89" class="btn">Discord</a>
         <a href="https://youtube.com/@pyrotek45" class="btn">YouTube</a>
         <a href="../programming-langs.html" class="btn">Programming-langs</a>
+        <a href="../avon.html" class="btn">Avon</a>
       </div>
     </header>
 "} in
@@ -324,6 +325,21 @@ let programming_lang_items = map (\p {"
     <p>{p.desc}</p>
   </li>
 "}) programming_langs in
+
+# --- Avon Documentation Page ---
+let avon_page =
+  let raw = readfile "content/avon.md" in
+  let html = markdown_to_html raw in
+  let content = {"
+    {header_html}
+    <article>
+      <div class="content">
+        {html}
+      </div>
+    </article>
+  "} in
+  @avon.html {"{layout "Avon" content}"}
+in
 
 # --- Page Generators ---
 
@@ -451,4 +467,4 @@ let programming_langs_page =
 in
 
 # --- Deploy List ---
-[index_page, programming_langs_page] + blog_pages
+[index_page, programming_langs_page, avon_page] + blog_pages
