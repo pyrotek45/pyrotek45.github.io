@@ -285,9 +285,18 @@ let project_items = map (\p {"
 
 # --- Programming Langs List ---
 let programming_langs = [
-  { name: "Niva", url: "https://github.com/gavr123456789/Niva", desc: "A modern programming language." },
-  { name: "Margarine", url: "https://github.com/todaymare/margarine", desc: "A programming language project." }
+  { 
+    name: "Niva",
+    url: "https://github.com/gavr123456789/Niva",
+    desc: "A static, more functional Smalltalk." 
+  },
+  { 
+    name: "Margarine", 
+    url: "https://github.com/todaymare/margarine", 
+    desc: "A programming language project." 
+  }
 ] in
+
 let programming_lang_items = map (\p {"
   <li class="post-item">
     <h3><a href="{p.url}" target="_blank">{p.name}</a></h3>
