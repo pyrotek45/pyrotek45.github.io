@@ -29,10 +29,10 @@ avon eval hello.av
 Deploy it (write to disk):
 
 ```bash
-avon deploy hello.av --root ./output
+avon hello.av --deploy --root /tmp/avon_output
 ```
 
-This creates `./output/hello.txt`. That's the core pattern: define variables → use them in templates → attach to file paths → deploy.
+This creates `/tmp/avon_output/hello.txt`. That's the core pattern: define variables → use them in templates → attach to file paths → deploy.
 
 **The three key types:**
 
@@ -197,10 +197,10 @@ Avon is a single binary with no dependencies:
 echo 'let greeting = "Hello" in @greet.txt "{greeting}, World!"' > hello.av
 
 # Deploy it
-avon hello.av --deploy --root ./output --force
+avon hello.av --deploy --root /tmp/avon_output --force
 
 # Your file is generated!
-cat ./output/greet.txt
+cat /tmp/avon_output/greet.txt
 ```
 
 Explore more examples at [github.com/pyrotek45/avon](https://github.com/pyrotek45/avon).
