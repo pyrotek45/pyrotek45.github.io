@@ -328,7 +328,7 @@ let programming_lang_items = map (\p {"
 
 # --- Avon Docs ---
 let avon_page = 
-  let html = readfile "avon_docs/avon.html" in
+  let html = import "avon_docs/content.av" in
   
   let content = {"
     {header_html}

@@ -1,3 +1,4 @@
+{{"
 <h1>Avon: Superpowers for Your Files</h1>
 
 <p><strong>Avon</strong> is a tool that gives superpowers to your configuration files. It combines a functional programming language with a deployment system, allowing you to generate and manage hundreds of files from a single source of truth.</p>
@@ -132,3 +133,4 @@ avon hello.av --deploy --root ./output
 </code></pre>
 
 <p>Stop managing files by hand. Give them superpowers with Avon.</p>
+"}}
