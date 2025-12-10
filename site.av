@@ -316,6 +316,11 @@ let programming_langs = [
     name: "Margarine", 
     url: "https://github.com/todaymare/margarine", 
     desc: "A programming language project." 
+  },
+  {
+    name: "Atlas77",
+    url: "https://github.com/atlas77-lang/atlas77",
+    desc: "Goofy C++ cousin with opt-in safety features."
   }
 ] in
 
