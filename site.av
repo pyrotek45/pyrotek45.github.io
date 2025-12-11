@@ -290,7 +290,7 @@ let header_html = {"
 "} in
 
 # --- Layout ---
-let layout = \title \description \og_image \content {"
+let layout = \title \description \og_image \og_url \content {"
 <!DOCTYPE html>
 <html>
 <head>
@@ -302,7 +302,7 @@ let layout = \title \description \og_image \content {"
   <meta property="og:title" content="{title} - {username}">
   <meta property="og:description" content="{description}">
   <meta property="og:type" content="website">
-  <meta property="og:url" content="https://pyrotek45.github.io/">
+  <meta property="og:url" content="{og_url}">
   <meta property="og:image" content="https://pyrotek45.github.io/{og_image}">
   <meta property="og:image:width" content="1200">
   <meta property="og:image:height" content="630">
@@ -379,7 +379,7 @@ let avon_page =
       </div>
     </article>
   "} in
-  @avon/index.html {"{layout "Avon" "A template language and file deployment tool for building static sites" "og-avon.png" content}"}
+  @avon/index.html {"{layout "Avon" "A template language and file deployment tool for building static sites" "og-avon.png" "https://pyrotek45.github.io/avon/" content}"}
 in
 
 # --- Page Generators ---
@@ -427,7 +427,7 @@ let index_page =
     </div>
   "} in
   
-  @index.html {"{layout "Home" "Linux enjoyer, programming language developer, musician and free will denier" "og-image.png" content}"}
+  @index.html {"{layout "Home" "Linux enjoyer, programming language developer, musician and free will denier" "og-image.png" "https://pyrotek45.github.io/" content}"}
 in
 
 # 2. Blog Post Pages
@@ -491,7 +491,7 @@ let blog_pages = map (\p
     </div>
   "} in
   
-  @blog/{p.slug}/index.html {"{layout p.title p.desc "og-blog-" + p.slug + ".png" page_content}"}
+  @blog/{p.slug}/index.html {"{layout p.title p.desc "og-blog-" + p.slug + ".png" "https://pyrotek45.github.io/blog/" + p.slug + "/" page_content}"}
 ) posts in
 
 # 3. Programming Langs Page
@@ -504,7 +504,7 @@ let programming_langs_page =
       {programming_lang_items}
     </ul>
   "} in
-  @programming-langs/index.html {"{layout "Programming Languages" "A collection of programming language projects and explorations" "og-programming-langs.png" content}"}
+  @programming-langs/index.html {"{layout "Programming Languages" "A collection of programming language projects and explorations" "og-programming-langs.png" "https://pyrotek45.github.io/programming-langs/" content}"}
 in
 
 # --- Deploy List ---
