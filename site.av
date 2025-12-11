@@ -42,7 +42,7 @@ let css = {{"
   }
   .btn {
     display: inline-block;
-    padding: 8px 15px;
+    padding: 6px 12px;
     background: #333;
     color: #fff;
     border: 2px solid #666;
@@ -50,6 +50,9 @@ let css = {{"
     box-shadow: 3px 3px 0px #eee;
     transition: all 0.1s;
     white-space: nowrap;
+    flex-shrink: 1;
+    min-width: 0;
+    font-size: 0.9em;
   }
   .btn:hover {
     background: #444;
@@ -91,9 +94,10 @@ let css = {{"
   }
   .links {
     display: flex;
-    flex-wrap: wrap;
+    flex-wrap: nowrap;
     justify-content: center;
     gap: 10px;
+    min-width: 0;
   }
   .home-grid {
     display: grid;
@@ -108,7 +112,8 @@ let css = {{"
       display: none;
     }
     .links {
-      flex-direction: column;
+      flex-wrap: wrap;
+      overflow-x: visible;
     }
     .btn {
       width: 100%;
@@ -270,6 +275,8 @@ let header_html = {"
         <a href="https://github.com/{username}" class="btn">GitHub</a>
         <a href="https://discord.gg/xYVVcerH89" class="btn">Discord</a>
         <a href="https://youtube.com/@pyrotek45" class="btn">YouTube</a>
+        <a href="https://pyrotek45.newgrounds.com/" class="btn">Newgrounds</a>
+        <a href="https://soundcloud.com/pyrotek45" class="btn">SoundCloud</a>
         <a href="../programming-langs.html" class="btn">Programming-langs</a>
         <a href="../avon.html" class="btn">Avon</a>
       </div>
