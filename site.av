@@ -274,8 +274,8 @@ let buttons = [
   { name: "GitHub", url: "https://github.com/" + username },
   { name: "Discord", url: "https://discord.gg/xYVVcerH89" },
   { name: "YouTube", url: "https://youtube.com/@pyrotek45" },
-  { name: "Programming-langs", url: "../programming-langs.html" },
-  { name: "Avon", url: "../avon.html" }
+  { name: "Programming-langs", url: "../programming-langs/" },
+  { name: "Avon", url: "../avon/" }
 ] in
 
 let button_items = map (\btn {"<a href="{btn.url}" class="btn">{btn.name}</a>"}) buttons in
@@ -377,7 +377,7 @@ let avon_page =
       </div>
     </article>
   "} in
-  @avon.html {"{layout "Avon" "A template language and file deployment tool for building static sites" "og-avon.png" content}"}
+  @avon/index.html {"{layout "Avon" "A template language and file deployment tool for building static sites" "og-avon.png" content}"}
 in
 
 # --- Page Generators ---
@@ -485,11 +485,11 @@ let blog_pages = map (\p
       {qa_section}
     </article>
     <div style="margin-top: 20px; margin-bottom: 20px;">
-      <a href="../index.html" class="btn">&larr; Back</a>
+      <a href="../../index.html" class="btn">&larr; Back</a>
     </div>
   "} in
   
-  @blog/{p.slug}.html {"{layout p.title p.desc "og-blog-" + p.slug + ".png" page_content}"}
+  @blog/{p.slug}/index.html {"{layout p.title p.desc "og-blog-" + p.slug + ".png" page_content}"}
 ) posts in
 
 # 3. Programming Langs Page
@@ -502,7 +502,7 @@ let programming_langs_page =
       {programming_lang_items}
     </ul>
   "} in
-  @programming-langs.html {"{layout "Programming Languages" "A collection of programming language projects and explorations" "og-programming-langs.png" content}"}
+  @programming-langs/index.html {"{layout "Programming Languages" "A collection of programming language projects and explorations" "og-programming-langs.png" content}"}
 in
 
 # --- Deploy List ---
