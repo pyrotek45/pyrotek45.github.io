@@ -15,7 +15,7 @@ create_og_image() {
     local bg_font_size=$((font_size * 2))
     
     convert -size 1200x630 xc:'#111111' \
-      \
+      -colorspace RGB \
       -font "DejaVu-Sans-Bold" -pointsize "$bg_font_size" -fill '#050505' -gravity center -annotate -550-200 "$title" \
       -font "DejaVu-Sans-Bold" -pointsize "$bg_font_size" -fill '#050505' -gravity center -annotate -50-200 "$title" \
       -font "DejaVu-Sans-Bold" -pointsize "$bg_font_size" -fill '#050505' -gravity center -annotate +450-200 "$title" \
@@ -37,7 +37,8 @@ create_og_image() {
       \
       -font "DejaVu-Sans" -pointsize 44 -fill '#333333' -gravity south -annotate +0+40 'pyrotek45.github.io' \
       -stroke '#eeeeee' -strokewidth 8 -fill none \
-      -draw 'rectangle 8,8 1192,622' "$output"
+      -draw 'rectangle 8,8 1192,622' \
+      -type TrueColor "$output"
     
     echo "✓ $(basename $output) ($font_size pt)"
 }
@@ -53,7 +54,7 @@ create_og_image_multiline() {
     local bg_font_size=$((font_size * 2))
     
     convert -size 1200x630 xc:'#111111' \
-      \
+      -colorspace RGB \
       -font "DejaVu-Sans-Bold" -pointsize "$bg_font_size" -fill '#050505' -gravity center -annotate -550-220 "$title1" \
       -font "DejaVu-Sans-Bold" -pointsize "$bg_font_size" -fill '#050505' -gravity center -annotate -50-220 "$title1" \
       -font "DejaVu-Sans-Bold" -pointsize "$bg_font_size" -fill '#050505' -gravity center -annotate +450-220 "$title1" \
@@ -81,9 +82,10 @@ create_og_image_multiline() {
       \
       -font "DejaVu-Sans" -pointsize 44 -fill '#333333' -gravity south -annotate +0+40 'pyrotek45.github.io' \
       -stroke '#eeeeee' -strokewidth 8 -fill none \
-      -draw 'rectangle 8,8 1192,622' "$output"
+      -draw 'rectangle 8,8 1192,622' \
+      -type TrueColor "$output"
     
-    echo "✓ $(basename $output) ($font_size pt x2)"
+    echo "✓ $(basename $output) ($font_size pt × 2 lines)"
 }
 
 echo "Creating OG images with horizontal shadow background effect..."
