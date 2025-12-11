@@ -427,7 +427,7 @@ let index_page =
     </div>
   "} in
   
-  @index.html {"{layout "Home" "Linux enjoyer, programming language developer, musician and free will denier" "og-home.png" "https://pyrotek45.github.io/" content}"}
+  @index.html {"{layout "Home" "Linux enjoyer, programming language developer and musician." "og-home.png" "https://pyrotek45.github.io/" content}"}
 in
 
 # 2. Blog Post Pages
