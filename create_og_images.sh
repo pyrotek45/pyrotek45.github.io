@@ -38,7 +38,8 @@ create_og_image() {
       -font "DejaVu-Sans" -pointsize 44 -fill '#333333' -gravity south -annotate +0+40 'pyrotek45.github.io' \
       -stroke '#eeeeee' -strokewidth 8 -fill none \
       -draw 'rectangle 8,8 1192,622' \
-      -type TrueColor "$output"
+      -fill '#110011' -draw 'point 0,0' \
+      -depth 8 -define png:color-type=2 "$output"
     
     echo "✓ $(basename $output) ($font_size pt)"
 }
@@ -83,7 +84,8 @@ create_og_image_multiline() {
       -font "DejaVu-Sans" -pointsize 44 -fill '#333333' -gravity south -annotate +0+40 'pyrotek45.github.io' \
       -stroke '#eeeeee' -strokewidth 8 -fill none \
       -draw 'rectangle 8,8 1192,622' \
-      -type TrueColor "$output"
+      -fill '#110011' -draw 'point 0,0' \
+      -depth 8 -define png:color-type=2 "$output"
     
     echo "✓ $(basename $output) ($font_size pt × 2 lines)"
 }
@@ -92,7 +94,7 @@ echo "Creating OG images with horizontal shadow background effect..."
 echo ""
 
 # Create images with different font sizes based on title length
-create_og_image "Home" 140 "-50" "$BASE/og-image.png"
+create_og_image "pyrotek45" 140 "-50" "$BASE/og-image.png"
 create_og_image "Avon" 140 "-50" "$BASE/og-avon.png"
 create_og_image "How to be Wise" 110 "-50" "$BASE/og-blog-how-to-be-wise.png"
 create_og_image_multiline "Programming" "Languages" 90 "$BASE/og-programming-langs.png"
