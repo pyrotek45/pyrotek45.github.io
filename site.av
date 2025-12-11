@@ -267,6 +267,17 @@ let css = {{"
 
 let username = "pyrotek45" in
 
+# --- Navigation Buttons Configuration ---
+# Easy to extend: just add new items to this list
+let buttons = [
+  { name: "Home", url: "../index.html" },
+  { name: "GitHub", url: "https://github.com/" + username },
+  { name: "Discord", url: "https://discord.gg/xYVVcerH89" },
+  { name: "YouTube", url: "https://youtube.com/@pyrotek45" },
+  { name: "Programming-langs", url: "../programming-langs.html" },
+  { name: "Avon", url: "../avon.html" }
+] in
+
 let header_html = {"
     <header class="nav">
       <p>Linux enjoyer, programming lang dev, musician and free will denier.</p>
@@ -275,8 +286,6 @@ let header_html = {"
         <a href="https://github.com/{username}" class="btn">GitHub</a>
         <a href="https://discord.gg/xYVVcerH89" class="btn">Discord</a>
         <a href="https://youtube.com/@pyrotek45" class="btn">YouTube</a>
-        <a href="https://pyrotek45.newgrounds.com/" class="btn">Newgrounds</a>
-        <a href="https://soundcloud.com/pyrotek45" class="btn">SoundCloud</a>
         <a href="../programming-langs.html" class="btn">Programming-langs</a>
         <a href="../avon.html" class="btn">Avon</a>
       </div>
