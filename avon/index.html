@@ -1,0 +1,475 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Avon - pyrotek45</title>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="description" content="A template language and file deployment tool">
+  <!-- Open Graph Meta Tags for Rich Embeds -->
+  <meta property="og:title" content="Avon - pyrotek45">
+  <meta property="og:description" content="A template language and file deployment tool">
+  <meta property="og:type" content="website">
+  <meta property="og:url" content="https://pyrotek45.github.io/avon/">
+  <meta property="og:image" content="https://pyrotek45.github.io/og-avon.png">
+  <meta property="og:image:width" content="1200">
+  <meta property="og:image:height" content="630">
+  <meta property="og:site_name" content="pyrotek45's Blog">
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:title" content="Avon - pyrotek45">
+  <meta name="twitter:description" content="A template language and file deployment tool">
+  <meta name="twitter:image" content="https://pyrotek45.github.io/og-avon.png">
+  <style>
+
+  body {
+    background-color: #111;
+    color: #eee;
+    font-family: 'Courier New', Courier, monospace;
+    line-height: 1.6;
+    margin: 0;
+    padding: 20px;
+  }
+  .container {
+    max-width: 800px;
+    margin: 0 auto;
+    border: 1px solid #333;
+    background: #222;
+    padding: 20px;
+    box-shadow: 5px 5px 0px #444;
+  }
+  h1, h2, h3 {
+    color: #fff;
+    text-transform: uppercase;
+    border-bottom: 2px solid #444;
+    padding-bottom: 10px;
+  }
+  h1 a {
+    border-bottom: none;
+    cursor: pointer;
+  }
+  h1 a:hover {
+    background: transparent;
+    opacity: 0.7;
+  }
+  a {
+    color: #fff;
+    text-decoration: none;
+    border-bottom: 1px dashed #666;
+  }
+  a:hover {
+    background: #333;
+  }
+  .btn {
+    display: inline-block;
+    padding: 6px 12px;
+    background: #333;
+    color: #fff;
+    border: 2px solid #666;
+    font-weight: bold;
+    box-shadow: 3px 3px 0px #eee;
+    transition: all 0.1s;
+    white-space: nowrap;
+    flex-shrink: 1;
+    min-width: 0;
+    font-size: 0.9em;
+  }
+  .btn:hover {
+    background: #444;
+    transform: translate(2px, 2px);
+    box-shadow: 1px 1px 0px #eee;
+  }
+  .post-list {
+    list-style: none;
+    padding: 0;
+  }
+  .post-item {
+    margin-bottom: 20px;
+    border: 1px solid #333;
+    padding: 20px;
+    background: #1a1a1a;
+    border-radius: 5px;
+    transition: transform 0.2s, border-color 0.2s;
+  }
+  .post-item:hover {
+    transform: translateY(-2px);
+    border-color: #666;
+  }
+  .post-item h3 {
+    margin-top: 0;
+    border-bottom: none;
+  }
+  .post-item a {
+    border-bottom: none;
+  }
+  .date {
+    color: #888;
+    font-size: 0.9em;
+  }
+  .nav {
+    margin-bottom: 40px;
+    padding-bottom: 20px;
+    border-bottom: 2px dashed #444;
+    text-align: center;
+  }
+  .links {
+    display: flex;
+    flex-wrap: nowrap;
+    justify-content: center;
+    gap: 10px;
+    min-width: 0;
+  }
+  .home-grid {
+    display: grid;
+    grid-template-columns: 2fr 1fr;
+    gap: 40px;
+  }
+  @media (max-width: 600px) {
+    .home-grid {
+      grid-template-columns: 1fr;
+    }
+    .ascii-art {
+      display: none;
+    }
+    .links {
+      flex-wrap: wrap;
+      overflow-x: visible;
+    }
+    .btn {
+      width: 100%;
+      box-sizing: border-box;
+    }
+  }
+  .sidebar-section {
+    margin-bottom: 30px;
+    background: #1a1a1a;
+    padding: 15px;
+    border: 1px solid #333;
+  }
+  .ascii-art {
+    font-family: monospace;
+    white-space: pre;
+    color: #666;
+    font-size: 10px;
+    line-height: 10px;
+    margin-bottom: 20px;
+    overflow-x: hidden;
+    text-align: center;
+  }
+  .tag {
+    display: inline-block;
+    background: #333;
+    color: #ccc;
+    padding: 2px 8px;
+    font-size: 0.8em;
+    margin-right: 5px;
+    margin-bottom: 5px;
+  }
+
+  /* Code Blocks */
+  pre {
+    background: #111;
+    padding: 15px;
+    border: 1px solid #333;
+    overflow-x: auto;
+    border-radius: 4px;
+  }
+  code {
+    font-family: 'Courier New', Courier, monospace;
+    background: #111;
+    padding: 2px 5px;
+    border-radius: 3px;
+    border: 1px solid #333;
+  }
+  pre code {
+    background: transparent;
+    padding: 0;
+    border: none;
+  }
+
+  /* Discussion / Q&A Styles */
+  .discussion-container {
+    background: #151515;
+    border: 1px solid #333;
+    padding: 20px;
+    margin: 40px 0;
+    border-radius: 8px;
+  }
+
+  .chat-message {
+    display: flex;
+    margin-bottom: 20px;
+    align-items: flex-start;
+  }
+
+  .chat-message.right {
+    flex-direction: row-reverse;
+  }
+
+  .avatar {
+    width: 50px;
+    height: 50px;
+    border-radius: 50%;
+    flex-shrink: 0;
+    border: 2px solid #444;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-weight: bold;
+    font-size: 1.2em;
+    overflow: hidden;
+  }
+
+  .avatar img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+  }
+
+  .avatar.reader {
+    background: #333;
+    color: #888;
+    margin-right: 15px;
+  }
+
+  .avatar.author {
+    background: #000;
+    border-color: #666;
+    margin-left: 15px;
+  }
+
+  .message-bubble {
+    background: #222;
+    padding: 15px 20px;
+    border-radius: 12px;
+    position: relative;
+    max-width: 80%;
+    border: 1px solid #333;
+  }
+
+  .chat-message.right .message-bubble {
+    background: #1a1a1a;
+    border-color: #444;
+  }
+
+  .message-bubble::before {
+    content: '';
+    position: absolute;
+    top: 15px;
+    border-style: solid;
+    border-width: 8px;
+  }
+
+  .chat-message.left .message-bubble::before {
+    left: -16px;
+    border-color: transparent #333 transparent transparent;
+  }
+
+  .chat-message.right .message-bubble::before {
+    right: -16px;
+    border-color: transparent transparent transparent #444;
+  }
+
+  .sender-name {
+    font-size: 0.7em;
+    text-transform: uppercase;
+    color: #666;
+    margin-bottom: 5px;
+    display: block;
+  }
+
+  .chat-message.right .sender-name {
+    text-align: right;
+  }
+
+  /* Video Marquee - REMOVED */
+
+  </style>
+</head>
+<body>
+  <div class="container">
+    <main>
+
+
+
+    <div class="ascii-art">
+░▒▓███████▓▒░░▒▓█▓▒░░▒▓█▓▒░▒▓███████▓▒░ ░▒▓██████▓▒░▒▓████████▓▒░▒▓████████▓▒░▒▓█▓▒░░▒▓█▓▒░▒▓█▓▒░░▒▓█▓▒░▒▓████████▓▒░ 
+░▒▓█▓▒░░▒▓█▓▒░▒▓█▓▒░░▒▓█▓▒░▒▓█▓▒░░▒▓█▓▒░▒▓█▓▒░░▒▓█▓▒░ ░▒▓█▓▒░   ░▒▓█▓▒░      ░▒▓█▓▒░░▒▓█▓▒░▒▓█▓▒░░▒▓█▓▒░▒▓█▓▒░        
+░▒▓█▓▒░░▒▓█▓▒░▒▓█▓▒░░▒▓█▓▒░▒▓█▓▒░░▒▓█▓▒░▒▓█▓▒░░▒▓█▓▒░ ░▒▓█▓▒░   ░▒▓█▓▒░      ░▒▓█▓▒░░▒▓█▓▒░▒▓█▓▒░░▒▓█▓▒░▒▓█▓▒░        
+░▒▓███████▓▒░ ░▒▓██████▓▒░░▒▓███████▓▒░░▒▓█▓▒░░▒▓█▓▒░ ░▒▓█▓▒░   ░▒▓██████▓▒░ ░▒▓███████▓▒░░▒▓████████▓▒░▒▓███████▓▒░  
+░▒▓█▓▒░         ░▒▓█▓▒░   ░▒▓█▓▒░░▒▓█▓▒░▒▓█▓▒░░▒▓█▓▒░ ░▒▓█▓▒░   ░▒▓█▓▒░      ░▒▓█▓▒░░▒▓█▓▒░      ░▒▓█▓▒░      ░▒▓█▓▒░ 
+░▒▓█▓▒░         ░▒▓█▓▒░   ░▒▓█▓▒░░▒▓█▓▒░▒▓█▓▒░░▒▓█▓▒░ ░▒▓█▓▒░   ░▒▓█▓▒░      ░▒▓█▓▒░░▒▓█▓▒░      ░▒▓█▓▒░      ░▒▓█▓▒░ 
+░▒▓█▓▒░         ░▒▓█▓▒░   ░▒▓█▓▒░░▒▓█▓▒░░▒▓██████▓▒░  ░▒▓█▓▒░   ░▒▓████████▓▒░▒▓█▓▒░░▒▓█▓▒░      ░▒▓█▓▒░▒▓███████▓▒░  
+    </div>
+
+    <header class="nav">
+      <p>Linux enjoyer, programming lang dev and musician.</p>
+      <div class="links">
+        <a href="/" class="btn">Home</a>
+        <a href="https://github.com/pyrotek45" class="btn">GitHub</a>
+        <a href="https://discord.gg/xYVVcerH89" class="btn">Discord</a>
+        <a href="https://youtube.com/@pyrotek45" class="btn">YouTube</a>
+        <a href="/programming-langs/" class="btn">Programming-langs</a>
+        <a href="/avon/" class="btn">Avon</a>
+      </div>
+    </header>
+
+    <article>
+      <div class="content">
+        <h1>Avon: File Generation for Creative Developers</h1>
+<p><strong>Avon</strong> is a elegant, powerful template language that turns repetitive file generation into maintainable code. Instead of copy-pasting configs, scripts, and boilerplate, Avon lets you write one program that generates them all.</p>
+<p>Whether you’re managing Kubernetes manifests, setting up CI/CD pipelines, generating boilerplate code, or just tired of maintaining 50 nearly identical YAML files—Avon is built for you.</p>
+<p><em>In fact, this entire website is generated using Avon!</em></p>
+<h2>Quick Start: Your First Program</h2>
+<p>Create a file called <code>hello.av</code>:</p>
+<pre><code class="language-avon">let name = "World" in
+let greeting = "Hello" in
+
+@hello.txt {"
+    {greeting}, {name}!
+    Welcome to Avon.
+"}
+</code></pre>
+<p>Preview it:</p>
+<pre><code class="language-bash">avon eval hello.av
+</code></pre>
+<p>Deploy it (write to disk):</p>
+<pre><code class="language-bash">avon deploy hello.av --root /tmp/avon_output
+</code></pre>
+<p>This creates <code>/tmp/avon_output/hello.txt</code>. That’s the core pattern: define variables → use them in templates → attach to file paths → deploy.</p>
+<p><strong>The three key types:</strong></p>
+<ul>
+<li><code>@hello.txt</code> — A Path (file destination)</li>
+<li><code>{"..."}</code> — A Template (content with <code>{variable}</code> placeholders)</li>
+<li><code>@path {"..."}</code> — A FileTemplate (the unit Avon deploys)</li>
+</ul>
+<h2>The Superpower: <code>@</code> Deployment</h2>
+<p>The magic of Avon is simple: use the <code>@</code> syntax to define exactly where a file should go, right inside your code.</p>
+<pre><code class="language-avon">let port = 8080 in
+let env = "production" in
+
+@config/app.yml {"
+server:
+  port: {port}
+  environment: {env}
+  debug: {if env == "production" then "false" else "true"}
+"}
+</code></pre>
+<p>When you run <code>avon --deploy</code>, the file is created instantly. No complex tooling. No build scripts. Just elegant, composable code.</p>
+<h2>Template Syntax</h2>
+<p>Templates in Avon use the <code>{"</code> and <code>"}</code> delimiters. Everything inside is interpolated—use <code>{expression}</code> to insert dynamic values:</p>
+<pre><code class="language-avon">let name = "Alice" in
+@greeting.txt {"
+Hello, {name}!
+Welcome to Avon.
+"}
+</code></pre>
+<p>Avon automatically handles indentation: it strips leading whitespace based on the first content line’s indentation, so you can indent templates in your source for readability without affecting output.</p>
+<h3>Handling Literal Braces</h3>
+<p>When you need literal braces (like in JSON or JavaScript), use the multi-brace delimiter system:</p>
+<p><strong>Single braces <code>{"</code> <code>"}</code></strong> — Use <code>{expr}</code> to interpolate. No literal braces.</p>
+<pre><code class="language-avon">let name = "Alice" in {"Hello, {name}!"}
+</code></pre>
+<p><strong>Double braces <code>{{"</code> <code>"}}</code></strong> — Use <code>{{expr}}</code> to interpolate. Single <code>{</code> and <code>}</code> are literal.</p>
+<pre><code class="language-avon">let x = 5 in {{"Value: {{x}} and literal {braces}"}}
+</code></pre>
+<p><strong>Triple braces <code>{{{"</code> <code>"}}}</code></strong> — Use <code>{{{expr}}}</code> to interpolate. Single <code>{</code> and <code>{{</code> are literal.</p>
+<pre><code class="language-avon">let name = "Alice" in {{{"
+class MyClass {
+  constructor() {
+    this.name = "{{{name}}}";
+  }
+}
+"}}}
+</code></pre>
+<p>Perfect for generating JSON, code, or template syntax without escaping.</p>
+<h2>Generate One File, or Hundreds</h2>
+<p>Generate multiple files by returning a list:</p>
+<pre><code class="language-avon">let environments = ["dev", "staging", "prod"] in
+map (\env @config-{env}.yml {"
+environment: {env}
+debug: {if env == "prod" then false else true}
+"}) environments
+</code></pre>
+<p>One program. Three files. Each customized automatically. No copy-paste. No mistakes.</p>
+<p>Functions use <code>\parameter expression</code> syntax. This example uses <code>map</code> to apply a function to each environment, creating a FileTemplate for each.</p>
+<h2>The –git Workflow: Share One Template, Deploy Everywhere</h2>
+<p>Fetch and deploy templates directly from GitHub:</p>
+<pre><code class="language-bash">avon deploy --git pyrotek45/avon/examples/config.av --root ~/.config -env prod -user alice
+</code></pre>
+<p>Keep one Avon file in git. Deploy customized versions on every machine. Everyone shares the same source, but each deployment adapts via CLI arguments. No more “can you send me your config?”</p>
+<h2>Why Avon?</h2>
+<ul>
+<li><strong>Single Expression</strong> — Every Avon file is one clean expression. Import and compose programs together effortlessly.</li>
+<li><strong>No Dependencies</strong> — Avon is a single binary. Download it and go.</li>
+<li><strong>First-Class Paths &amp; Templates</strong> — <code>@path {"content"}</code> makes file destinations part of your language, not an afterthought.</li>
+<li><strong>Atomic Deployments</strong> — Files are written safely. No partial or corrupted deployments.</li>
+<li><strong>Functional Programming</strong> — Variables, functions, map/filter/fold, currying, runtime type checking.</li>
+<li><strong>111 Built-in Functions</strong> — String manipulation, lists, dicts, regex, file I/O, HTML/Markdown helpers, and more.</li>
+</ul>
+<h2>More Than Configuration</h2>
+<p>Because Avon is a full programming language with 100+ built-in functions, you can use it for creative tasks beyond config files:</p>
+<ul>
+<li><strong>Scaffold new project structures</strong> — Generate entire directory layouts with starter code</li>
+<li><strong>Generate boilerplate</strong> — Eliminate template code for different languages</li>
+<li><strong>Manage dotfiles</strong> — One <code>.vimrc.av</code> in git, customized deployments for each machine</li>
+<li><strong>Build CI/CD pipelines</strong> — Dynamic workflows that adapt to your project structure</li>
+<li><strong>Create HTML or documentation</strong> — Use loops and templates to generate static content</li>
+<li><strong>Anything text-based</strong> — YAML, JSON, TOML, HCL, shell scripts, Terraform, Kubernetes manifests, you name it</li>
+</ul>
+<h2>Core Commands</h2>
+<pre><code class="language-bash">avon eval program.av              # Preview output (no files written)
+avon deploy program.av --root ./  # Write files to disk
+avon run 'expr'                   # Evaluate expression directly
+avon repl                         # Interactive exploration
+avon doc                          # Built-in function reference
+</code></pre>
+<h2>How Deployment Works</h2>
+<p>When you run <code>avon deploy program.av</code>, Avon evaluates your program:</p>
+<ul>
+<li>If it returns a <strong>Function</strong> — CLI arguments are applied to it</li>
+<li>If it returns a <strong>FileTemplate</strong> — It’s written to disk</li>
+<li>If it returns a <strong>List of FileTemplates</strong> — They’re all deployed</li>
+</ul>
+<pre><code class="language-avon"># Returns a function - CLI args are applied
+\env @config-{env}.yml {"environment: {env}"}
+
+# Returns a FileTemplate - deployed directly  
+@config.yml {"port: 8080"}
+
+# Returns a list of FileTemplates - all are deployed
+[
+  @config.yml {"port: 8080"},
+  @settings.yml {"debug: true"}
+]
+</code></pre>
+<h2>A Vision for Creative File Generation</h2>
+<p>Avon exists because developers deserve better than copy-paste. I built it hoping people would find creative uses I never imagined. Generate API clients. Build documentation sites. Create personalized dev environments. Use it as a templating engine for your side projects.</p>
+<p>The possibilities are limited only by your imagination. Give your files superpowers with Avon.</p>
+<h2>Get Started</h2>
+<p>Avon is a single binary with no dependencies:</p>
+<pre><code class="language-bash"># Download from https://github.com/pyrotek45/avon
+
+# Create a simple program
+echo 'let greeting = "Hello" in @greet.txt "{greeting}, World!"' &gt; hello.av
+
+# Deploy it
+avon deploy hello.av --root /tmp/avon_output --force
+
+# Your file is generated!
+cat /tmp/avon_output/greet.txt
+</code></pre>
+<p>Explore more examples at <a href="https://github.com/pyrotek45/avon">github.com/pyrotek45/avon</a>.</p>
+<p>Stop managing files by hand. Give them superpowers with Avon.</p>
+
+      </div>
+    </article>
+
+    </main>
+
+    <footer>
+      <p style="margin-top: 50px; color: #666; text-align: center;">
+        Generated with <a href="https://github.com/pyrotek45/avon" target="_blank" rel="noopener noreferrer">Avon</a>
+      </p>
+    </footer>
+  </div>
+</body>
+</html>

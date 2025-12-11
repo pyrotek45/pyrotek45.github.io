@@ -1,0 +1,357 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Home - pyrotek45</title>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="description" content="Linux enjoyer, programming language developer and musician.">
+  <!-- Open Graph Meta Tags for Rich Embeds -->
+  <meta property="og:title" content="Home - pyrotek45">
+  <meta property="og:description" content="Linux enjoyer, programming language developer and musician.">
+  <meta property="og:type" content="website">
+  <meta property="og:url" content="https://pyrotek45.github.io/">
+  <meta property="og:image" content="https://pyrotek45.github.io/og-home.png">
+  <meta property="og:image:width" content="1200">
+  <meta property="og:image:height" content="630">
+  <meta property="og:site_name" content="pyrotek45's Blog">
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:title" content="Home - pyrotek45">
+  <meta name="twitter:description" content="Linux enjoyer, programming language developer and musician.">
+  <meta name="twitter:image" content="https://pyrotek45.github.io/og-home.png">
+  <style>
+
+  body {
+    background-color: #111;
+    color: #eee;
+    font-family: 'Courier New', Courier, monospace;
+    line-height: 1.6;
+    margin: 0;
+    padding: 20px;
+  }
+  .container {
+    max-width: 800px;
+    margin: 0 auto;
+    border: 1px solid #333;
+    background: #222;
+    padding: 20px;
+    box-shadow: 5px 5px 0px #444;
+  }
+  h1, h2, h3 {
+    color: #fff;
+    text-transform: uppercase;
+    border-bottom: 2px solid #444;
+    padding-bottom: 10px;
+  }
+  h1 a {
+    border-bottom: none;
+    cursor: pointer;
+  }
+  h1 a:hover {
+    background: transparent;
+    opacity: 0.7;
+  }
+  a {
+    color: #fff;
+    text-decoration: none;
+    border-bottom: 1px dashed #666;
+  }
+  a:hover {
+    background: #333;
+  }
+  .btn {
+    display: inline-block;
+    padding: 6px 12px;
+    background: #333;
+    color: #fff;
+    border: 2px solid #666;
+    font-weight: bold;
+    box-shadow: 3px 3px 0px #eee;
+    transition: all 0.1s;
+    white-space: nowrap;
+    flex-shrink: 1;
+    min-width: 0;
+    font-size: 0.9em;
+  }
+  .btn:hover {
+    background: #444;
+    transform: translate(2px, 2px);
+    box-shadow: 1px 1px 0px #eee;
+  }
+  .post-list {
+    list-style: none;
+    padding: 0;
+  }
+  .post-item {
+    margin-bottom: 20px;
+    border: 1px solid #333;
+    padding: 20px;
+    background: #1a1a1a;
+    border-radius: 5px;
+    transition: transform 0.2s, border-color 0.2s;
+  }
+  .post-item:hover {
+    transform: translateY(-2px);
+    border-color: #666;
+  }
+  .post-item h3 {
+    margin-top: 0;
+    border-bottom: none;
+  }
+  .post-item a {
+    border-bottom: none;
+  }
+  .date {
+    color: #888;
+    font-size: 0.9em;
+  }
+  .nav {
+    margin-bottom: 40px;
+    padding-bottom: 20px;
+    border-bottom: 2px dashed #444;
+    text-align: center;
+  }
+  .links {
+    display: flex;
+    flex-wrap: nowrap;
+    justify-content: center;
+    gap: 10px;
+    min-width: 0;
+  }
+  .home-grid {
+    display: grid;
+    grid-template-columns: 2fr 1fr;
+    gap: 40px;
+  }
+  @media (max-width: 600px) {
+    .home-grid {
+      grid-template-columns: 1fr;
+    }
+    .ascii-art {
+      display: none;
+    }
+    .links {
+      flex-wrap: wrap;
+      overflow-x: visible;
+    }
+    .btn {
+      width: 100%;
+      box-sizing: border-box;
+    }
+  }
+  .sidebar-section {
+    margin-bottom: 30px;
+    background: #1a1a1a;
+    padding: 15px;
+    border: 1px solid #333;
+  }
+  .ascii-art {
+    font-family: monospace;
+    white-space: pre;
+    color: #666;
+    font-size: 10px;
+    line-height: 10px;
+    margin-bottom: 20px;
+    overflow-x: hidden;
+    text-align: center;
+  }
+  .tag {
+    display: inline-block;
+    background: #333;
+    color: #ccc;
+    padding: 2px 8px;
+    font-size: 0.8em;
+    margin-right: 5px;
+    margin-bottom: 5px;
+  }
+
+  /* Code Blocks */
+  pre {
+    background: #111;
+    padding: 15px;
+    border: 1px solid #333;
+    overflow-x: auto;
+    border-radius: 4px;
+  }
+  code {
+    font-family: 'Courier New', Courier, monospace;
+    background: #111;
+    padding: 2px 5px;
+    border-radius: 3px;
+    border: 1px solid #333;
+  }
+  pre code {
+    background: transparent;
+    padding: 0;
+    border: none;
+  }
+
+  /* Discussion / Q&A Styles */
+  .discussion-container {
+    background: #151515;
+    border: 1px solid #333;
+    padding: 20px;
+    margin: 40px 0;
+    border-radius: 8px;
+  }
+
+  .chat-message {
+    display: flex;
+    margin-bottom: 20px;
+    align-items: flex-start;
+  }
+
+  .chat-message.right {
+    flex-direction: row-reverse;
+  }
+
+  .avatar {
+    width: 50px;
+    height: 50px;
+    border-radius: 50%;
+    flex-shrink: 0;
+    border: 2px solid #444;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-weight: bold;
+    font-size: 1.2em;
+    overflow: hidden;
+  }
+
+  .avatar img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+  }
+
+  .avatar.reader {
+    background: #333;
+    color: #888;
+    margin-right: 15px;
+  }
+
+  .avatar.author {
+    background: #000;
+    border-color: #666;
+    margin-left: 15px;
+  }
+
+  .message-bubble {
+    background: #222;
+    padding: 15px 20px;
+    border-radius: 12px;
+    position: relative;
+    max-width: 80%;
+    border: 1px solid #333;
+  }
+
+  .chat-message.right .message-bubble {
+    background: #1a1a1a;
+    border-color: #444;
+  }
+
+  .message-bubble::before {
+    content: '';
+    position: absolute;
+    top: 15px;
+    border-style: solid;
+    border-width: 8px;
+  }
+
+  .chat-message.left .message-bubble::before {
+    left: -16px;
+    border-color: transparent #333 transparent transparent;
+  }
+
+  .chat-message.right .message-bubble::before {
+    right: -16px;
+    border-color: transparent transparent transparent #444;
+  }
+
+  .sender-name {
+    font-size: 0.7em;
+    text-transform: uppercase;
+    color: #666;
+    margin-bottom: 5px;
+    display: block;
+  }
+
+  .chat-message.right .sender-name {
+    text-align: right;
+  }
+
+  /* Video Marquee - REMOVED */
+
+  </style>
+</head>
+<body>
+  <div class="container">
+    <main>
+
+
+
+    <div class="ascii-art">
+░▒▓███████▓▒░░▒▓█▓▒░░▒▓█▓▒░▒▓███████▓▒░ ░▒▓██████▓▒░▒▓████████▓▒░▒▓████████▓▒░▒▓█▓▒░░▒▓█▓▒░▒▓█▓▒░░▒▓█▓▒░▒▓████████▓▒░ 
+░▒▓█▓▒░░▒▓█▓▒░▒▓█▓▒░░▒▓█▓▒░▒▓█▓▒░░▒▓█▓▒░▒▓█▓▒░░▒▓█▓▒░ ░▒▓█▓▒░   ░▒▓█▓▒░      ░▒▓█▓▒░░▒▓█▓▒░▒▓█▓▒░░▒▓█▓▒░▒▓█▓▒░        
+░▒▓█▓▒░░▒▓█▓▒░▒▓█▓▒░░▒▓█▓▒░▒▓█▓▒░░▒▓█▓▒░▒▓█▓▒░░▒▓█▓▒░ ░▒▓█▓▒░   ░▒▓█▓▒░      ░▒▓█▓▒░░▒▓█▓▒░▒▓█▓▒░░▒▓█▓▒░▒▓█▓▒░        
+░▒▓███████▓▒░ ░▒▓██████▓▒░░▒▓███████▓▒░░▒▓█▓▒░░▒▓█▓▒░ ░▒▓█▓▒░   ░▒▓██████▓▒░ ░▒▓███████▓▒░░▒▓████████▓▒░▒▓███████▓▒░  
+░▒▓█▓▒░         ░▒▓█▓▒░   ░▒▓█▓▒░░▒▓█▓▒░▒▓█▓▒░░▒▓█▓▒░ ░▒▓█▓▒░   ░▒▓█▓▒░      ░▒▓█▓▒░░▒▓█▓▒░      ░▒▓█▓▒░      ░▒▓█▓▒░ 
+░▒▓█▓▒░         ░▒▓█▓▒░   ░▒▓█▓▒░░▒▓█▓▒░▒▓█▓▒░░▒▓█▓▒░ ░▒▓█▓▒░   ░▒▓█▓▒░      ░▒▓█▓▒░░▒▓█▓▒░      ░▒▓█▓▒░      ░▒▓█▓▒░ 
+░▒▓█▓▒░         ░▒▓█▓▒░   ░▒▓█▓▒░░▒▓█▓▒░░▒▓██████▓▒░  ░▒▓█▓▒░   ░▒▓████████▓▒░▒▓█▓▒░░▒▓█▓▒░      ░▒▓█▓▒░▒▓███████▓▒░  
+    </div>
+
+    <header class="nav">
+      <p>Linux enjoyer, programming lang dev and musician.</p>
+      <div class="links">
+        <a href="/" class="btn">Home</a>
+        <a href="https://github.com/pyrotek45" class="btn">GitHub</a>
+        <a href="https://discord.gg/xYVVcerH89" class="btn">Discord</a>
+        <a href="https://youtube.com/@pyrotek45" class="btn">YouTube</a>
+        <a href="/programming-langs/" class="btn">Programming-langs</a>
+        <a href="/avon/" class="btn">Avon</a>
+      </div>
+    </header>
+
+
+    <div class="home-grid">
+      <div class="main-col">
+        <h2>Latest Logs</h2>
+        <ul class="post-list">
+
+              <li class="post-item">
+                <h3><a href="/blog/how-to-be-wise/">How to be Wise</a></h3>
+                <p class="date">2025-12-08</p>
+                <p>The bucket theory of wisdom.</p>
+              </li>
+
+        </ul>
+      </div>
+
+      <div class="sidebar-col">
+        <div class="sidebar-section">
+          <h3>Projects</h3>
+
+            <div style="margin-bottom: 10px;">
+              <a href="https://github.com/pyrotek45/avon" target="_blank" style="font-weight: bold; border: none;">Avon</a>
+              <div style="font-size: 0.8em; color: #888;">File Deployment Tool and Template language</div>
+            </div>
+
+            <div style="margin-bottom: 10px;">
+              <a href="https://github.com/pyrotek45/nova-lang" target="_blank" style="font-weight: bold; border: none;">Nova-Lang</a>
+              <div style="font-size: 0.8em; color: #888;">Programming language</div>
+            </div>
+        </div>
+
+      </div>
+    </div>
+
+    </main>
+
+    <footer>
+      <p style="margin-top: 50px; color: #666; text-align: center;">
+        Generated with <a href="https://github.com/pyrotek45/avon" target="_blank" rel="noopener noreferrer">Avon</a>
+      </p>
+    </footer>
+  </div>
+</body>
+</html>
