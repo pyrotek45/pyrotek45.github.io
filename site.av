@@ -473,7 +473,7 @@ let blog_pages = map (\p
 
   let page_content = {"
     <div style="margin-bottom: 20px;">
-      <a href="../index.html" class="btn">&larr; Back</a>
+      <a href="/" class="btn">&larr; Back</a>
     </div>
     <article>
       <h2>{p.title}</h2>
