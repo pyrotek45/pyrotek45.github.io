@@ -290,13 +290,25 @@ let header_html = {"
 "} in
 
 # --- Layout ---
-let layout = \title \content {"
+let layout = \title \description \og_image \content {"
 <!DOCTYPE html>
 <html>
 <head>
   <title>{title} - {username}</title>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="description" content="{description}">
+  <!-- Open Graph Meta Tags for Rich Embeds -->
+  <meta property="og:title" content="{title} - {username}">
+  <meta property="og:description" content="{description}">
+  <meta property="og:type" content="website">
+  <meta property="og:url" content="https://pyrotek45.github.io/">
+  <meta property="og:image" content="https://pyrotek45.github.io/{og_image}">
+  <meta property="og:site_name" content="{username}'s Blog">
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:title" content="{title} - {username}">
+  <meta name="twitter:description" content="{description}">
+  <meta name="twitter:image" content="https://pyrotek45.github.io/{og_image}">
   <style>
     {css}
   </style>
@@ -365,7 +377,7 @@ let avon_page =
       </div>
     </article>
   "} in
-  @avon.html {"{layout "Avon" content}"}
+  @avon.html {"{layout "Avon" "A template language and file deployment tool for building static sites" "og-avon.png" content}"}
 in
 
 # --- Page Generators ---
@@ -413,7 +425,7 @@ let index_page =
     </div>
   "} in
   
-  @index.html {"{layout "Home" content}"}
+  @index.html {"{layout "Home" "Linux enjoyer, programming language developer, musician and free will denier" "og-image.png" content}"}
 in
 
 # 2. Blog Post Pages
@@ -477,7 +489,7 @@ let blog_pages = map (\p
     </div>
   "} in
   
-  @blog/{p.slug}.html {"{layout p.title page_content}"}
+  @blog/{p.slug}.html {"{layout p.title p.desc "og-blog-" + p.slug + ".png" page_content}"}
 ) posts in
 
 # 3. Programming Langs Page
@@ -490,7 +502,7 @@ let programming_langs_page =
       {programming_lang_items}
     </ul>
   "} in
-  @programming-langs.html {"{layout "Programming Languages" content}"}
+  @programming-langs.html {"{layout "Programming Languages" "A collection of programming language projects and explorations" "og-programming-langs.png" content}"}
 in
 
 # --- Deploy List ---
