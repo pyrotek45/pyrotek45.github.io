@@ -278,16 +278,13 @@ let buttons = [
   { name: "Avon", url: "../avon.html" }
 ] in
 
+let button_items = map (\btn {"<a href="{btn.url}" class="btn">{btn.name}</a>"}) buttons in
+
 let header_html = {"
     <header class="nav">
       <p>Linux enjoyer, programming lang dev, musician and free will denier.</p>
       <div class="links">
-        <a href="../index.html" class="btn">Home</a>
-        <a href="https://github.com/{username}" class="btn">GitHub</a>
-        <a href="https://discord.gg/xYVVcerH89" class="btn">Discord</a>
-        <a href="https://youtube.com/@pyrotek45" class="btn">YouTube</a>
-        <a href="../programming-langs.html" class="btn">Programming-langs</a>
-        <a href="../avon.html" class="btn">Avon</a>
+        {button_items}
       </div>
     </header>
 "} in
