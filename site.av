@@ -284,7 +284,7 @@ let header_html = {"
     <header class="nav">
       <p>Linux enjoyer, programming lang dev, musician and free will denier.</p>
       <div class="links">
-        {button_items}
+        { buttons -> map (\btn {"<a href="{btn.url}" class="btn">{btn.name}</a>"}) }
       </div>
     </header>
 "} in
