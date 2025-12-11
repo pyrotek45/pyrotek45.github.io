@@ -94,7 +94,7 @@ echo "Creating OG images with horizontal shadow background effect..."
 echo ""
 
 # Create images with different font sizes based on title length
-create_og_image "pyrotek45" 140 "-50" "$BASE/og-image.png"
+create_og_image "pyrotek45" 120 "-50" "$BASE/og-home.png"
 create_og_image "Avon" 140 "-50" "$BASE/og-avon.png"
 create_og_image "How to be Wise" 110 "-50" "$BASE/og-blog-how-to-be-wise.png"
 create_og_image_multiline "Programming" "Languages" 90 "$BASE/og-programming-langs.png"

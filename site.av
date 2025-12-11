@@ -379,7 +379,7 @@ let avon_page =
       </div>
     </article>
   "} in
-  @avon/index.html {"{layout "Avon" "A template language and file deployment tool for building static sites" "og-avon.png" "https://pyrotek45.github.io/avon/" content}"}
+  @avon/index.html {"{layout "Avon" "A template language and file deployment tool" "og-avon.png" "https://pyrotek45.github.io/avon/" content}"}
 in
 
 # --- Page Generators ---
@@ -427,7 +427,7 @@ let index_page =
     </div>
   "} in
   
-  @index.html {"{layout "Home" "Linux enjoyer, programming language developer, musician and free will denier" "og-image.png" "https://pyrotek45.github.io/" content}"}
+  @index.html {"{layout "Home" "Linux enjoyer, programming language developer, musician and free will denier" "og-home.png" "https://pyrotek45.github.io/" content}"}
 in
 
 # 2. Blog Post Pages
