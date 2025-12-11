@@ -270,12 +270,12 @@ let username = "pyrotek45" in
 # --- Navigation Buttons Configuration ---
 # Easy to extend: just add new items to this list
 let buttons = [
-  { name: "Home", url: "../index.html" },
+  { name: "Home", url: "/" },
   { name: "GitHub", url: "https://github.com/" + username },
   { name: "Discord", url: "https://discord.gg/xYVVcerH89" },
   { name: "YouTube", url: "https://youtube.com/@pyrotek45" },
-  { name: "Programming-langs", url: "../programming-langs/" },
-  { name: "Avon", url: "../avon/" }
+  { name: "Programming-langs", url: "/programming-langs/" },
+  { name: "Avon", url: "/avon/" }
 ] in
 
 let button_items = map (\btn {"<a href="{btn.url}" class="btn">{btn.name}</a>"}) buttons in
@@ -485,7 +485,7 @@ let blog_pages = map (\p
       {qa_section}
     </article>
     <div style="margin-top: 20px; margin-bottom: 20px;">
-      <a href="../../index.html" class="btn">&larr; Back</a>
+      <a href="/" class="btn">&larr; Back</a>
     </div>
   "} in
   
